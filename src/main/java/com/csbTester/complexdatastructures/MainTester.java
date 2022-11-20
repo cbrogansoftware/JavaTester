@@ -13,6 +13,8 @@ public class MainTester {
         String[] classesSummer = {"Statistics", "Immunology", "Operating Systems"};
         //List<String> lClasses = ListLoader(classesFall);
         List<String> classesFallL = Complexmaps.ListLoader(classesFall);
+        List<String> classesSpringL = Complexmaps.ListLoader(classesSpring);
+        List<String> classesSummerL = Complexmaps.ListLoader(classesSummer);
 
         Complexmaps.Student student1 = new Complexmaps.Student("Chris", "Brogan", 50);
         Complexmaps.Student student2 = new Complexmaps.Student("John", "Cassilly", 70);
@@ -20,14 +22,17 @@ public class MainTester {
 
         //Complexmaps complexmaps = new Complexmaps();
 
-        HashMap<Complexmaps.Student, List> classLoad = new HashMap<Complexmaps.Student, List>();
+//        HashMap<Complexmaps.Student, List> classLoad = new HashMap<Complexmaps.Student, List>();
+        Map<Complexmaps.Student, List<String>> classLoad = new HashMap<>();
 
         classLoad.put(student1, classesFallL);
+        classLoad.put(student2, classesSpringL);
+        classLoad.put(student3, classesSummerL);
 
-        for (int i = 0;i < classLoad.size();i++){
-            System.out.println(student1.getfName());
-            System.out.println(classLoad.get(student1).get(2));
-        }
+        classLoad.forEach((key, value) -> {
+            //System.out.println(key.getfName() + "=" + value + " "); // Show all 'classes' for student fName
+            System.out.println(key.getfName() + "=" + value.get(2) + " ");
+        });
 
     }
 }
